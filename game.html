@@ -21,7 +21,7 @@
       }
       .border {
         width: 500px;
-        height: 350px;
+        height: 400px;
         border: 1px solid black;
         text-align: center;
         background-color: rgb(255, 255, 255);
@@ -75,6 +75,16 @@
         padding: 5px 10px 5px 10px;
         background-color: bisque;
       }
+      .win {
+        width: 300px;
+        height: 40px;
+        margin: auto;
+        margin-top: 0;
+        /* border: 1px solid black; */
+        display: block;
+        text-align: center;
+        color: blue;
+      }
     </style>
   </head>
 
@@ -98,6 +108,9 @@
         <div class="result">
           <p id="player">가위</p>
           <p id="computer">가위</p>
+        </div>
+        <div class="win">
+          <p id="winner">결과</p>
         </div>
 
         <div class="btn">
@@ -144,16 +157,20 @@
       } else if (comval === 2) {
         document.getElementById("computer").innerText = "보";
       }
-      console.log(`${myval}  ${comval}`);
+      console.log(`${myval} : ${comval}`);
+
       if (myval - comval === 1 || myval - comval === -2) {
         document.getElementById("myScore").innerText = ++myScore;
 
         console.log(`이겼습니다. ${myScore} : ${comScore} `);
+        document.getElementById("winner").innerText = "player가 이겼습니다!";
       } else if (myval - comval === -1 || myval - comval === 2) {
         document.getElementById("comScore").innerText = ++comScore;
+        document.getElementById("winner").innerText = "Computer가 이겼습니다";
         console.log(`졌습니다. ${myScore} : ${comScore} `);
       } else if (myval - comval === 0) {
         console.log(`비겼습니다. ${myScore} : ${comScore} `);
+        document.getElementById("winner").innerText = "비겼습니다";
       }
     }
 
@@ -162,6 +179,7 @@
       document.getElementById("comScore").innerText = 0;
       document.getElementById("computer").innerText = "가위";
       document.getElementById("player").innerText = "가위";
+      document.getElementById("winner").innerText = "결과";
     }
   </script>
 </html>
